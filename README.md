@@ -189,11 +189,14 @@ Three details that were each a bug first:
 ## Files
 
 | Path | Contents |
-|---|---|---|
-| `bootlog/` | `kernel-boot.log` — full UART capture, StartCode → U-Boot → kernel → userspace |
-| `SHELL-SESSION.md` | annotated transcript: stock CLI, then the patched root shell |
-| `firmware/` | **`shell-pack.pack`** — the final build (root shell on :2323); see [FIRMWARE.md](FIRMWARE.md) |
-| `tools/` | `shellsvc` (root shell, port 2323), `flashpull` (full dump over TCP), `mkpack.py` (HWNP packer), `tftpd.py`; sources + `Makefile` that rebuilds both binaries byte-identically |
-| `../dumps/` | `fresh-dump/full.bin` — verified 16 MB image |
-| `../packs/` | built HWNP packages |
-| `../refs/` | reference firmware used to derive the container format |
+|---|---|
+| `README.md` | this overview |
+| `FIRMWARE.md` | the packaged firmware, how to flash it, and recovery |
+| `SHELL-SESSION.md` | annotated transcript: stock CLI, then the root shell |
+| `bootlog/` | `kernel-boot.log` — full UART capture, StartCode → U-Boot → kernel |
+| `firmware/` | `shell-pack.pack` — the final build (root shell on :2323) |
+| `tools/` | `shellsvc`, `flashpull`, `mkpack.py`, `tftpd.py`, sources + `Makefile` |
+
+The working archive outside this repository keeps the verified flash dumps,
+the other packages and the reference firmware. They are large binaries and are
+not needed to understand or rebuild anything here.
