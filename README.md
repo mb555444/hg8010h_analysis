@@ -56,6 +56,46 @@ flowchart LR
     RA --> J["/mnt/jffs2<br/>rw config"]
 ```
 
+## Enabling telnet (stock firmware)
+
+Telnet is compiled in and `X_HW_CLITelnetAccess Access="1"` is already set — it
+is only blocked by the LAN ACL. Fix that in the config file:
+
+1. Browse to `http://192.168.100.1` and log in as `telecomadmin` / `admintelecom`
+   (or `root` / `admin`).
+2. **System Tools → Configuration File → Download** → save `hw_ctree.xml`
+   (menu wording varies slightly between firmware revisions).
+3. In that XML, change exactly one attribute:
+
+   ```diff
+   - <AclServices HTTPLanEnable="1" ... TELNETLanEnable="0" TELNETWanEnable="0" .../>
+   + <AclServices HTTPLanEnable="1" ... TELNETLanEnable="1" TELNETWanEnable="0" .../>
+   ```
+
+   Leave `TELNETWanEnable="0"` — LAN only.
+4. **System Tools → Configuration File → Upload** the edited file. The ONT
+   reboots itself; power-cycle if it does not.
+5. Port 23 is open:
+
+   ```console
+   $ telnet 192.168.100.1
+   Login: root              # or root/adminHW, telecomadmin/admintelecom
+   Password: admin
+   WAP>su
+   success!
+   SU_WAP>
+   ```
+
+Keep the unmodified `hw_ctree.xml` — it is the rollback. Uploading a config
+replaces the running one, so change nothing else in the file.
+
+A hidden page at `/html/ssmp/telnet.asp` toggles the same ACL; the config route
+above is the one verified on this unit.
+
+The config file itself is not included here: it contains the device serial,
+MAC addresses and per-user password hashes. Keep your own copy out of version
+control.
+
 ## Getting in
 
 ```sh
