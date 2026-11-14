@@ -1,2 +1,4 @@
 __pycache__/
 *.pyc
+hw_ctree*.xml
+*.xml
