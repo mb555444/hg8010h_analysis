@@ -169,6 +169,28 @@ Solution: a 68 KB static ARM binary (`shellsvc`) started from
 telnet 192.168.100.1 2323      # root shell
 ```
 
+```console
+/ # grep Uid /proc/self/status
+Uid:	0	0	0	0
+/ # cat /proc/cpuinfo
+processor	: 0
+model name	: ARMv7 Processor rev 0 (v7l)
+BogoMIPS	: 743.83
+Features	: swp half thumb fastmult edsp thumbee tls 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x3
+CPU part	: 0xc09
+CPU revision	: 0
+CPU physical	:0
+
+Hardware	: Hisilicon A9
+Revision	: 0000
+Serial		: 0000000000000000
+```
+
+(this busybox has no `id` or `whoami`, so the uid comes from `/proc`)
+
 Three details that were each a bug first:
 
 | Symptom | Cause | Fix |
