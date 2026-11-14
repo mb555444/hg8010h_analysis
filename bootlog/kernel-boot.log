@@ -1,0 +1,320 @@
+ HuaWei StartCode 2012.02 (Mar 25 2014 - 01:04:34)
+
+ SPI:
+startcode select the uboot to load
+the high RAM is :8080103c
+startcode uboot boot count:-1
+Boot load address :0x40000
+ Use the UbootA to loa d success
+ U-Boot 2010.03 (V300R017C10 Nov 16 2017 - 08:38:19)
+
+Mbist flag = 0x0, ddr totoal size = 0x8000000
+DRAM: 128 MB
+ Boot From SPI flash
+Chip Type is SD5115S
+SFC : cs1 recognized JEDEC id 0x1 0x20 0x18 0x3 0x0 0x0
+SFC: cs1 s25fl128s (16384 Kbytes)
+SFC: Detected s25fl128s with page size 256 K, total 16 MB
+SFC: spi_flash is NULL !
+SFC: sfc_read flash offset 0x80000, len 0x40000, memory buf 0x81ea0008
+ *** Warning - bad CRC, using default environment
+
+ In: serial
+Out: serial
+Err: serial
+ PHY power down !!!
+ [main.c__6102]::CRC:0x3d80a8b4, Magic1:0x5a5a5a5a, Magic2:0xa5a5a5a5, count:0, CommitedArea:0x0, Active:0x0, RunFlag:0x0
+Start from main system(0x0)!
+CRC:0x3d80a8b4, Magic1:0x5a5a5a5a, Magic2:0xa5a5a5a5, count:1, CommitedArea:0x0, Active:0x0, RunFlag:0x0
+Main area (A) is OK!
+CRC:0x93e83925, Magic1:0x5a5a5a5a, Magic2:0xa5a5a5a5, count:1, CommitedArea:0x0, Active:0x0, RunFlag:0x0
+Bootcmd:bootm 0x1c140054
+BootArgs:noalign mem=118M console=ttyAMA1,115200 root=/dev/mtdblock8 mtdparts=hi_ sfc:0x40000(startcode)ro,0x40000(bootA)ro,0x40000(bootB)ro,0x40000(flashcfg)ro,0x40000(slave_param)ro,0x200000(kernelA)ro,0x200000(kernelB)ro,0x480000(rootfsA)ro,0x480000(rootfsB)ro,0x180000(file_system),-(reserved) pcie0_sel=x1 maxcpus=0 l2_cache=off user_debug=0x1f panic=1 skb_priv=128 debug_ll=on
+ SPI flash age para meter magic verify failed!
+U-boot Start from NORMAL Mode!
+
+## Booting kernel from Legacy Image at 1c140054 ...
+ Image Name: Linux-3.10.53-HULK2
+ Image Type: ARM Linux Kernel Image (uncompressed)
+ Data Size: 790287 Bytes = 771.8 kB
+ Load Address: 80e08000
+ Entry Point: 80e08000
+ Memory Start: 80a00000
+SFC : cs1 recognized JEDEC id 0x1 0x20 0x18 0x3 0x0 0x0
+SFC: cs1 s25fl128s (16384 Kbytes)
+SFC: Detected s25fl128s with page size 256 K, total 16 MB
+SFC: BP~0x7 already protect ON !
+ Loading Kernel Image ... SFC: sfc_read flash offset 0x140094, len 0xc0f0f, memory buf 0x80a08000
+ OK
+OK
+ kernel loaded at 0x80a08000, end = 0x80ac8f0f Starting kernel ...
+
+Uart base = 0x1010F000
+dtb addr = 0x80C50818
+Uncompressing Linux... done, booting the kernel.
+Booting Linux on physical CPU 0x0
+Linux version 3.10.53-HULK2 (ci@SZX1000044416) (gcc version 4.7.1 (SDK V100R005C00SPC030B050) ) #1 Fri Oct 20 00:54:31 CST 2017
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=50c53c7d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: Hisilicon A9, model: HISI-CA9
+skbuff priv len is 128.
+Memory policy: ECC disabled, Data cache writeback
+On node 0 totalpages: 30208
+free_area_init_n ode: node 0, pgdat c018e5f0, node_mem_map c0256000
+ Normal zone: 236 pages used for memmap
+ Normal zone: 0 pages reserved
+ Normal zone: 30208 pages, LIFO batch:7
+CPU: All CPU(s ) started in SVC mode.
+[dts]:cpu type is 5115
+[DTS][CPU]-->WARN:Find slave_boot_addr fail, make sure the soc isn't SMP!
+[DTS][CPU]-->WARN:Find slave_boot_times fail, maybe the soc isn't SMP or we reset 1 times as default.
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0
+Built 1 zonelists in Zone order, mobility grouping on. Total pages: 29972
+Kernel command line: noalign mem=118M console=ttyAMA1,115200 root=/dev/mtdblock8 mtdparts=hi_sfc:0x40000(startcode)ro,0x4000 0(bootA)ro,0x40000(bootB)ro,0x40000(flashcfg)ro,0x40000(slave_param)ro,0x200000(kernelA)ro,0x200000(kernelB)ro,0x480000(rootfsA)ro,0x480000(rootfsB)ro,0x180000(file_system),-(reserved) pcie0_sel=x1 maxcpus=0 l2_cache=off user_debug=0x1f panic=1 skb_priv=128 debug_ll=on
+PID hash table entries: 512 (order: -1, 2048 bytes)
+Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+ Memory: 118MB = 118MB total
+Memory: 118036k/118036k available, 2796k reserved, 0K highmem
+Virtual kernel memory layout:
+ vector : 0xffff0000 - 0xffff1000 ( 4 kB)
+ fixmap : 0xffe00000 - 0xfffe0000 (1920 kB)
+ vmalloc : 0xc7800000 - 0xff000000 ( 888 MB)
+ lowmem : 0xc0000000 - 0xc7600000 ( 118 MB)
+ modules : 0xbf800000 - 0xc0000000 ( 8 MB)
+ .text : 0xc0008000 - 0xc01503c8 (1313 kB)
+ .init : 0xc0151000 - 0xc016300c ( 73 kB)
+ .data : 0x c0164000 - 0xc018f988 ( 175 kB)
+ .bss : 0xc018f988 - 0xc019f610 ( 64 kB)
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+NR_IRQS:512
+Can't find irq_group in dtb.
+sched_clock: 32 bits at 100MHz, resolution 10ns, wraps every 42949ms
+Calibrating delay loop... 743.83 BogoMIPS (lpj=3719168)
+pid_max: default: 4096 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+Setting up static identity map for 0xc0106f38 - 0xc0106f68
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+bio: create slab <bio-0> at 0
+Switching to clocksource arm,sp804
+NET: Registered protocol family 2
+TCP established hash table entries: 1024 (order: 1, 8192 bytes)
+TCP bind hash table ent ries: 1024 (order: 1, 12288 bytes)
+TCP: Hash tables configured (established 1024 bind 1024)
+TCP: reno registered
+UDP hash table entries: 128 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 128 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+squashfs: version 4.0 (2009/01/31) Phillip Lougher
+msgmni has been set to 230
+io scheduler noop registered (default)
+brd: module loaded
+Spi id table Version 1.22
+SD511x chip id:0x51151100
+Spi Flash Controller V300 Device Driver, Version 1.10
+Spi(cs1) ID: 0x01 0x20 0x18 0x03 0x00 0x00
+Spi(cs1): Block:3223043624KB Chip:3223043624MB (Name:S25FL128P-0)
+Lock Spi Flash(cs1):BP~0x7!
+Hisilicon flash: registering whole flash at once as master MTD
+11 cmdlinepart partitions found on MTD device hi_sfc
+Creating 11 MTD partitions on "hi_sfc":
+0x000000000000-0x000000040000 : "startcode"
+0x000000040000-0x000000080000 : "bootA"
+0x000000080000-0x0000000c0000 : "bootB"
+0x0000000c0000-0x000000100000 : "flashcfg"
+0x0000001000 00-0x000000140000 : "slave_param"
+0x000000140000-0x000000340000 : "kernelA"
+0x000000340000-0x000000540000 : "kernelB"
+0x000000540000-0x0000009c0000 : "rootfsA"
+0x0000009c0000-0x000000e40000 : "rootfsB"
+0x000000e40000-0x000000fc0000 : "file_system"
+0x000000fc0000-0x000001000000 : "reserved"
+Special nand id table Version 1.33
+Hisilicon Nand Flash Controller V301 Device Driver, Version 1.10
+ TCP: cubic registered
+NET: Registered protocol family 17
+ThumbEE CPU extension supported.
+kbox: load OK
+Warning: unable to open an initial console.
+squashfs_cache_init: sqcachesize=3.
+VFS: Mounted root (squashfs filesystem) readonly on device 31:8.
+Freeing unused kernel memory: 72K (c0151000 - c0163000)
+******** Total Boot time: 311 ms, uncompress initrd cost 0 ms ********
+ Serial: 8250/16550 d river, 4 ports, IRQ sharing disabled
+1010e000.uart: ttyAMA0 at MMIO 0x1010e000 (irq = 77) is a 16550A
+Booting Linux on physical CPU 0x0
+Linux version 3.10.53-HULK2 (ci@SZX1000044416) (gcc version 4.7.1 (SDK V100R005C00SPC030B050) ) #1 Fri Oct 20 00:54:31 CST 2017
+CPU: ARMv7 Processor [413fc090] revision 0 (ARMv7), cr=50c53c7d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT nonaliasing instruction cache
+Machine: Hisilicon A9, model: HISI-CA9
+skbuff priv len is 128.
+Memory policy: ECC di sabled, Data cache writeback
+CPU: All CPU(s) started in SVC mode.
+[dts]:cpu type is 5115
+[DTS][CPU]-->WARN:Find slave_boot_addr fail, make sure the soc isn't SMP!
+[DTS][CPU]-->WARN:Find slave_boot_times fail, maybe the soc isn't SMP or we reset 1 times as default.
+Built 1 zonelists in Zone order, mobility grouping on. Total pages: 29972
+Kernel command line: noalign mem=118M console=ttyAMA1,115200 root=/dev/mtdblock8 mtdparts=hi_sfc:0x40000(startcode)ro,0x40000(bootA)ro,0x40000(boot B)ro,0x40000(flashcfg)ro,0x40000(slave_param)ro,0x200000(kernelA)ro,0x200000(kernelB)ro,0x480000(rootfsA)ro,0x480000(rootfsB)ro,0x180000(file_system),-(reserved) pcie0_sel=x1 maxcpus=0 l2_cache=off user_debug=0x1f panic=1 skb_priv=128 debug_ll=on
+PID hash table entries: 512 (order: -1, 2048 bytes)
+Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+Memory: 118MB = 118MB total
+Memory: 118036k/118036k available, 2796k reserved, 0K highmem
+Virtual kernel memory layout:
+ vector : 0xffff0000 - 0xffff1000 ( 4 kB)
+ fixmap : 0xffe00000 - 0xfffe0000 (1920 kB)
+ vmalloc : 0xc7800000 - 0xff000000 ( 888 MB)
+ lowmem : 0xc0000000 - 0xc7600000 ( 118 MB)
+ modules : 0xbf800000 - 0xc0000000 ( 8 MB)
+ .text : 0xc0008000 - 0xc01503c8 (1313 kB)
+ .init : 0xc0151000 - 0xc016300c ( 73 kB)
+ .data : 0xc0164000 - 0xc018f988 ( 175 kB)
+ .bss : 0xc018f988 - 0xc019f 610 ( 64 kB)
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+NR_IRQS:512
+Can't find irq_group in dtb.
+sched_clock: 32 bits at 100MHz, resolution 10ns, wraps every 42949ms
+Calibrating delay loop... 743.83 BogoMIPS (lpj=3719168)
+pid_max: default: 4096 minimum: 301
+Mount-cache hash table entries: 512
+CPU: Testing write buffer coherency: ok
+Setting up static identity map for 0xc0106f38 - 0xc0106f68
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for ato mic coherent allocations
+bio: create slab <bio-0> at 0
+Switching to clocksource arm,sp804
+NET: Registered protocol family 2
+TCP established hash table entries: 1024 (order: 1, 8192 bytes)
+TCP bind hash table entries: 1024 (order: 1, 12288 bytes)
+TCP: Hash tables configured (established 1024 bind 1024)
+TCP: reno registered
+UDP hash table entries: 128 (order: 0, 4096 bytes)
+UDP-Lite hash table entries: 128 (order: 0, 4096 bytes)
+NET: Registered protocol family 1
+squashfs: version 4. 0 (2009/01/31) Phillip Lougher
+msgmni has been set to 230
+io scheduler noop registered (default)
+brd: module loaded
+Spi id table Version 1.22
+SD511x chip id:0x51151100
+Spi Flash Controller V300 Device Driver, Version 1.10
+Spi(cs1) ID: 0x01 0x20 0x18 0x03 0x00 0x00
+Spi(cs1): Block:3223043624KB Chip:3223043624MB (Name:S25FL128P-0)
+Lock Spi Flash(cs1):BP~0x7!
+Hisilicon flash: registering whole flash at once as master MTD
+11 cmdlinepart partitions found on MTD device hi_sfc
+Creating 11 MTD partitions on "hi_sfc":
+0x000000000000-0x000000040000 : "startcode"
+0x000000040000-0x000000080000 : "bootA"
+0x000000080000-0x0000000c0000 : "bootB"
+0x0000000c0000-0x000000100000 : "flashcfg"
+0x000000100000-0x000000140000 : "slave_param"
+0x000000140000-0x000000340000 : "kernelA"
+0x000000340000-0x000000540000 : "kernelB"
+0x000000540000-0x0000009c0000 : "rootfsA"
+0x0000009c0000-0x000000e40000 : "rootfsB"
+0x000000e40000-0x000000fc0000 : "file_system"
+0x000000fc0000-0x000001000 000 : "reserved"
+Special nand id table Version 1.33
+Hisilicon Nand Flash Controller V301 Device Driver, Version 1.10
+TCP: cubic registered
+NET: Registered protocol family 17
+ThumbEE CPU extension supported.
+kbox: load OK
+Warning: unable to open an initial console.
+squashfs_cache_init: sqcachesize=3.
+VFS: Mounted root (squashfs filesystem) readonly on device 31:8.
+Freeing unused kernel memory: 72K (c0151000 - c0163000)
+******** Total Boot time: 311 ms, uncompress initrd cost 0 ms * *******
+Serial: 8250/16550 driver, 4 ports, IRQ sharing disabled
+1010e000.uart: ttyAMA0 at MMIO 0x1010e000 (irq = 77) is a 16550A
+1010f000.uart: ttyAMA1 at MMIO 0x1010f000 (irq = 78) is a 16550A
+console [ttyAMA1] enabled
+ hi_wdt: User-Mode!
+register_reset_notifier success
+hi_wdt: Init sucessfull!
+ jffs2: version 2.2. (NAND) (SUMMARY) © 2001-200 6 Red Hat, Inc.
+ hw_ssp_basic: module license 'Huawei Tech. Co., Ltd.' taints kernel.
+Disabling lock debugging due to kernel taint
+ hw_dm_init successfu lly...
+ current lastword info:Add=0xc7a01000;max_num=300;Add1=0xc7a01000;Add2=0xc7a06000;Add3=0xc7a0b000;
+ pro c_dbg_log_get_last_logbuffer:get last buffer.
+ reload log OK!
+ SYSCTL module is installed
+
+ SPI module is installed
+ regist : vd success !
+ PIE USE 1 cpus
+
+ PIE module is installed
+ GPIO module is installed
+ I2C module is installed
+ TIMER23 module is installed
+ SERDES module is intalled
+ DMA module is installed
+ CHIP module is installed
+set mac work mode ge...set port mode PMODE_SGMII...set port tx/rx enable... hi_adp_cnt module is installed BRIDGE module is installed
+ PON_LP module is installed
+ GPON module is installed
+ OAM module is installed
+ ------ SOC is 5115S PILOT ------
+COMMON For LDSP Install Successfully...
+I2C For LDSP Install Successfully...
+ GPIO For LDSP Install Successfully...
+ OPTIC For LDSP Install Successfully...
+ KEY For LDSP Install Successfully...
+ LED For LDSP Install Successfully...
+ RF For LDSP Install Successfully. ..
+<ldsp>board version is 1
+<lds p>pcb version is 0
+<ldsp>orig board version is 1
+DEV For LDSP Install Successfully...
+ [DM]ui_curr_soc_type = 1, ui_curr_ soc_sub_type = 0
+
+ ----------other CPU TYPE ------------
+hw_dm_pdt_init_file_names /etc/wap/dm.cfg/pd_relation_5115s.cfg /etc/wap/dm.cfg/topo_relation_5115s.cfg
+ SoftVersion=[V300R017C10SPC125B176], ResVersion=[] Active=[0] Dir=[]
+hw_dm_init_data successfully...
+ load ft
+ WARNING: Spec SPEC_TR143_WAITTIME value is error, and discarded.
+ AMP Module Install Successfully...
+ PLOAM For LDSP Install Successfully...
+ GMAC Module Install Successfully...
+ PPM For LDSP Install Successfully...
+ kbox: ddrram: verify fs magic fail. It's ok if first time using this device
+kbox:create region panic, size=520192
+ PPP generic driver version 2.4.2
+NET: Registered protocol family 24
+ bbsp ptpdrv install ...... [OK]
+[Error]received netlink trace message. src pid:0;
+ pppoe_module_init load success!
+l2base For BBSP Install Successfully...
+[Error]received netlink trace message. src pid:0;
+[Error]received netlink trace message. src pid:0;
+[Error]received netlink trace message. src pid:0;
+[Error]received netlink trace message. src pid:0;
+ l2ext For BBSP Install Successfully... pdt QOS install successfully...
+ <LDSP> system has no slave space for bob
+ SD511X test self OK
+Optic test self NoCheck
+WIFI test self NoCheck
+PHY[1] test self OK
+PHY[2] test self OK
+PHY[3] test self OK
+PHY[4] test self OK
+PHY[5] test self NoCheck
+ExtRF test self NoCheck
+
+<LDSP> 5171 optic
+ <LDSP> bob op tic was calibrated
+ read data is over time
+
+ read data is over time
+
+ <LDSP> optic firmware load success!
+ gpon_api module is installed
+hs_gmac_func_register ret=0x0!
+ GPON init success !
