@@ -200,3 +200,22 @@ Three details that were each a bug first:
 The working archive outside this repository keeps the verified flash dumps,
 the other packages and the reference firmware. They are large binaries and are
 not needed to understand or rebuild anything here.
+
+## References
+
+Prior art this builds on:
+
+1. **hack-gpon.org — Huawei HG8010H** · <https://hack-gpon.org/ont-huawei-hg8010h/>
+   Device identification and the stock telnet-enable procedure (`hw_ctree.xml`,
+   `TELNETLanEnable`). The approach used here is the same.
+2. **hwfw-tool** (fork of LeeXiaolan's original, GPLv2) · <https://github.com/kryndex/hwfw-tool>
+   The `HWNP` package format: unpack/pack with CRC recalculation, including the
+   `-0x4C` file-length bias, plus a `root-shell-poc` that patches a pack.
+   `tools/mkpack.py` re-derives the same rules and reproduces their reference
+   package byte-for-byte.
+3. **logon84 — Hacking Huawei HG8012H ONT** · <https://github.com/logon84/Hacking_Huawei_HG8012H_ONT>
+   SPI-clip dump workflow, the Huawei wrapper header (length + crc32) around the
+   uImage and squashfs, and the squashfs repack-as-root requirement.
+
+None of these documents the `/proc/self/root` traversal used here to read flash
+from the stock CLI — they all start with a hardware SPI programmer.
