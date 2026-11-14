@@ -120,7 +120,8 @@ set flashlock status 0        # unlock SPI writes (reverts each boot)
 Reading is not byte-exact though: the CLI runs the output through a text-mode
 line discipline that inserts a stray `0x0D` before `0x0A` non-deterministically.
 Fix: take 4–8 paced reads, decode `CRLF → LF`, resync-merge pairs, and keep the
-result whose uImage CRCs validate.
+result whose uImage CRCs validate — [`tools/readflash.py`](tools/readflash.py)
+does exactly this.
 
 ## Writing: the HWNP pack
 

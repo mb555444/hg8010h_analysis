@@ -9,6 +9,7 @@ binaries byte-identically to the ones shipped here (needs `arm-none-eabi-gcc`).
 | `flashpull.c` / `flashpull` | streams `/dev/mtd0` (16 MB) to `192.168.100.10:7000` |
 | `mkpack.py` | parse / rebuild Huawei `HWNP` firmware packages |
 | `tftpd.py` | minimal read-only TFTP server, for `load pack by tftp` |
+| `readflash.py` | dump flash over the stock CLI: multi-read + resync-merge + CRC validation |
 
 ## Root shell
 
@@ -33,6 +34,23 @@ chmod +x /tmp/flashpull && /tmp/flashpull
 
 `flashpull` has the host and port compiled in (`192.168.100.10:7000`); edit the
 two constants at the top of `_start()` if yours differ.
+
+## Reading the flash without a root shell
+
+Only the `WAP>` / `SU_WAP>` CLI is needed — no shell, no clip, no programmer.
+
+```sh
+python3 readflash.py --host 192.168.100.1 --out ./dump
+python3 readflash.py --only kernelA --only rootfsB --reads 6
+```
+
+`display file` corrupts binary (a stray `0x0D` appears before `0x0A`, and it
+varies per transfer), so each partition is read several times and the variants
+are resync-merged. The winning candidate is the one whose uImage header and
+data CRC validate; partitions without a checksum (startcode, bootA/B, config)
+report how many reads agreed instead. Expect ~30 s per 256 KiB partition.
+
+Once a root shell is available, `flashpull` is much faster and byte-exact.
 
 ## Packing firmware
 
